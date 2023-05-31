@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<!--使用set方法和构造器进行依赖注入-->
+    <bean id="book" class="edu.shily.spring6.iocxml.di.Book">
+        <property name="bookName" value="C++"/>
+        <property name="author" value="God"/>
+    </bean>
+
+    <bean id="bookCon" class="edu.shily.spring6.iocxml.di.Book">
+        <constructor-arg name="bookName" value="前端"/>
+        <constructor-arg name="author" value="牛"/>
+    </bean>
+
+
+</beans>

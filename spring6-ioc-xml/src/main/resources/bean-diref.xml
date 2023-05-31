@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:uitl="http://www.springframework.org/schema/util"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/util
+         http://www.springframework.org/schema/util/spring-util.xsd
+         http://www.springframework.org/schema/beans
+         http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="studentp" class="edu.shily.spring6.iocxml.dimap.Student" p:sid="100" p:sname="李好帅" p:lessonList-ref="lessonList" p:teacherMap-ref="teacherMap" />
+
+    <bean id="student" class="edu.shily.spring6.iocxml.dimap.Student">
+        <property name="sid" value="1" />
+        <property name="sname" value="张三" />
+        <!--注入list、map类型属性-->
+        <property name="lessonList" ref="lessonList" />
+        <property name="teacherMap" ref="teacherMap" />
+    </bean>
+
+    <uitl:list id="lessonList">
+        <ref bean="lesson1" />
+        <ref bean="lesson2" />
+    </uitl:list>
+    <uitl:map id="teacherMap">
+        <entry>
+            <key>
+                <value>10000</value>
+            </key>
+            <ref bean="teacher1" />
+        </entry>
+        <entry>
+            <key>
+                <value>10001</value>
+            </key>
+            <ref bean="teacher2" />
+        </entry>
+    </uitl:map>
+
+    <bean id="lesson1" class="edu.shily.spring6.iocxml.dimap.Lesson">
+        <property name="lessonName" value="java开发" />
+    </bean>
+    <bean id="lesson2" class="edu.shily.spring6.iocxml.dimap.Lesson">
+        <property name="lessonName" value="php开发" />
+    </bean>
+    <bean id="teacher1" class="edu.shily.spring6.iocxml.dimap.Teacher">
+        <property name="tid" value="1001" />
+        <property name="tname" value="张老师" />
+    </bean>
+    <bean id="teacher2" class="edu.shily.spring6.iocxml.dimap.Teacher">
+        <property name="tid" value="1002" />
+        <property name="tname" value="王老师" />
+    </bean>
+</beans>
